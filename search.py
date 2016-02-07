@@ -7,8 +7,10 @@ if len(sys.argv) == 1:
     print("Usage: ./search.py <XML_FILE> [option(s)]")
     print()
     print("Options:")
-    print("   --keyword    search messages by keyword")
-    print("   --exact      perform exact match")
+    print("   --keyword    Search messages by keyword")
+    print("   --exact      Use exact matching on name/keyword")
+    print()
+    print("Note: Default mode uses substring matching to match names/keywords")
     sys.exit(1)
 
 # Parse options
@@ -52,10 +54,10 @@ for child in root:
             if keyword in message.split():
                 print_message(child)
         elif keyword in message:
-                print_message(child)
+            print_message(child)
     else:
         if exact_match:
             if name in contact.split():
                 print_message(child)
         elif name in contact:
-                print_message(child)
+            print_message(child)
